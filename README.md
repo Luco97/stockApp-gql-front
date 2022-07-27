@@ -1,3 +1,19 @@
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/907296858970415144/1001659822359453726/stock-app-logo.png" alt="logo de aplicacion" width="320">
+</p>
+<hr>
+
+## Descripcion
+
+Front para servidor creado con NestJS utilizando GraphQl, con la intencion de aprender graphQL (parte del back) y aprender a desarrollar Front-End utilizando Angular (version 13)
+
+### Caracteristicas
+
+Alguna de las definiciones tomadas para la App:
+
+- Libreria UI utilizada: Angular Material
+- Mas chamullo en el futuro
+
 # StockApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
