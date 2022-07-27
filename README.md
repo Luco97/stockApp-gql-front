@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/907296858970415144/1001659822359453726/stock-app-logo.png" alt="logo de aplicacion" width="320">
+    <img src="https://cdn.discordapp.com/attachments/907296858970415144/1001666111827353650/stock-app-logo.png" alt="logo de aplicacion" width="320">
 </p>
 <hr>
 
