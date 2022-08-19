@@ -181,6 +181,14 @@ $dark-theme: mat.define-dark-theme(
   // @include mat.button-color($light-theme);
 }
 
+// Typography
+$custom-typography: mat.define-typography-config(
+  $title: mat.define-typography-level(2rem, 1, 800),
+  $font-family: "Nunito",
+);
+
+@include mat.all-component-typographies($custom-typography);
+
 html,
 body {
   height: 100%;
