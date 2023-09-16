@@ -59,6 +59,7 @@ export class ImageLensComponent implements OnInit, AfterViewInit {
     return {
       position: 'absolute',
       'transform-origin': 'top left',
+      // TODO: no escalar y usar porcentajes (para imagen lente de mayor resolucion)
       transform: `scale(${this.scale})`,
       top: `-${coor['offsetY'] * this.scale - this.boxSize / 2}px`,
       left: `-${coor['offsetX'] * this.scale - this.boxSize / 2}px`,
