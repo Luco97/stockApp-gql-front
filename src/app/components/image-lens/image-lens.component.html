@@ -1,0 +1,30 @@
+<figure class="sample-image">
+  <img
+    coorAxis
+    (coordinates)="mouseOutput($event)"
+    (mouseEnter)="mouseEnter($event)"
+    [alt]="imageAlt"
+    [src]="imageUrl"
+  />
+</figure>
+
+<ng-template #imageLensTemplate>
+  <figure class="sample-image">
+    <div
+      [ngStyle]="{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        overflow: 'hidden',
+        width: boxSize + 'px',
+        height: boxSize + 'px'
+      }"
+    >
+      <img
+        [ngStyle]="imageStyle(imageInfo.coor)"
+        [alt]="imageLensAlt || 'scaled ' + imageAlt"
+        [src]="imageUrl"
+      />
+    </div>
+  </figure>
+</ng-template>
