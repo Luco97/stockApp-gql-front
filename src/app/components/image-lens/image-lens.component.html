@@ -9,22 +9,21 @@
 </figure>
 
 <ng-template #imageLensTemplate>
-  <figure class="sample-image">
-    <div
-      [ngStyle]="{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        overflow: 'hidden',
-        width: boxSize + 'px',
-        height: boxSize + 'px'
-      }"
-    >
-      <img
-        [ngStyle]="imageStyle(imageInfo.coor)"
-        [alt]="imageLensAlt || 'scaled ' + imageAlt"
-        [src]="imageUrl"
-      />
-    </div>
+  <figure
+    [ngStyle]="{
+      position: 'relative',
+      margin: 'unset',
+      width: boxSizeWidth + 'px',
+      overflow: 'hidden',
+      height: boxSizeHeight + 'px'
+    }"
+  >
+    <img
+      [ngStyle]="imageStyle(imageInfo.coor)"
+      [alt]="imageLensAlt || 'scaled ' + imageAlt"
+      [src]="imageLensUrl"
+    />
   </figure>
 </ng-template>
+
+<img #imageLens [src]="imageLensUrl" style="display: none" />
