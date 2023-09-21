@@ -22,11 +22,13 @@ import { coorAxis } from '@directives/coordinates';
 export class ImageLensComponent implements OnInit {
   @HostListener('wheel', ['$event']) wheelEvent(event: WheelEvent) {
     if (event.deltaY > 0 && this.scale > 0.75) {
-      // scroll down
+      // scroll down, zoom out
       this.scale -= 0.05;
+      this.zoom.emit('out');
     } else if (event.deltaY < 0) {
-      // scroll up
+      // scroll up, zoom in
       this.scale += 0.05;
+      this.zoom.emit('in');
     }
   }
 
@@ -49,6 +51,12 @@ export class ImageLensComponent implements OnInit {
    */
   @Output('mouseOverImage') mouseOverImage: EventEmitter<boolean> =
     new EventEmitter<boolean>();
+  /**
+   * Emite evento mouseover sobre imageUrl
+   */
+  @Output('zoom') zoom: EventEmitter<'in' | 'out'> = new EventEmitter<
+    'in' | 'out'
+  >();
   /**
    * Emite template de imageLensUrl
    */

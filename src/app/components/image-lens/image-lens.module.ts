@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageLensComponent } from './image-lens.component';
 import { CoordinatesModule } from '@directives/coordinates';
+import { ImageLensComponent } from './image-lens.component';
 
 @NgModule({
   declarations: [ImageLensComponent],
