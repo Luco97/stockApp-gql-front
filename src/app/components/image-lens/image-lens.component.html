@@ -6,15 +6,16 @@
     [alt]="imageAlt"
     [src]="imageUrl"
   />
+  <img #imageLens [src]="imageLensUrl" style="display: none" />
 </figure>
 
 <ng-template #imageLensTemplate>
   <figure
     [ngStyle]="{
-      position: 'relative',
       margin: 'unset',
-      width: boxSizeWidth + 'px',
+      position: 'relative',
       overflow: 'hidden',
+      width: boxSizeWidth + 'px',
       height: boxSizeHeight + 'px'
     }"
   >
@@ -25,5 +26,3 @@
     />
   </figure>
 </ng-template>
-
-<img #imageLens [src]="imageLensUrl" style="display: none" />
