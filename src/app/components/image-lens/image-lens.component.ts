@@ -62,8 +62,16 @@ export class ImageLensComponent implements OnInit {
    */
   @Output('imageLensElement') imageLensElement: EventEmitter<TemplateRef<any>> =
     new EventEmitter<TemplateRef<any>>();
+  /**
+   * Emite template de un div con imagen en en background-image: url(...)
+   */
+  @Output('bgLensElement') bgLensElement: EventEmitter<TemplateRef<any>> =
+    new EventEmitter<TemplateRef<any>>();
+
   @ViewChild('imageLensTemplate')
   private _imageLensTemplate!: TemplateRef<any>;
+  @ViewChild('bgLensTemplate')
+  private _bgLensTemplate!: TemplateRef<any>;
   @ViewChild('imageLens') private _imageLens!: ElementRef<HTMLImageElement>;
   scale: number = 1;
 
@@ -95,6 +103,8 @@ export class ImageLensComponent implements OnInit {
     this.imageInfo['coor'] = event;
     if (this._imageLensTemplate && this.imageInfo['isIn'])
       this.imageLensElement.emit(this._imageLensTemplate);
+    if (this._bgLensTemplate && this.imageInfo['isIn'])
+      this.bgLensElement.emit(this._bgLensTemplate);
   }
 
   mouseEnter(event: boolean) {
@@ -129,6 +139,37 @@ export class ImageLensComponent implements OnInit {
       transform: `scale(${this.scale ?? 0.01})`,
       top: `-${y_axis}px`,
       left: `-${x_axis}px`,
+    };
+    return style;
+  }
+
+  bgStyle(coor: coorAxis): Object {
+    let x_axis: number =
+        (coor['offsetX'] / coor['naturalWidth']) *
+          this._imageLens.nativeElement.naturalWidth *
+          this.scale -
+        this.boxSizeWidth / 2,
+      y_axis: number =
+        (coor['offsetY'] / coor['naturalHeight']) *
+          this._imageLens.nativeElement.naturalHeight *
+          this.scale -
+        this.boxSizeHeight / 2;
+    if (x_axis + this.boxSizeWidth > this._imageLens.nativeElement.naturalWidth)
+      x_axis = this._imageLens.nativeElement.naturalWidth - this.boxSizeWidth;
+    if (x_axis < 0) x_axis = 0;
+    if (
+      y_axis + this.boxSizeHeight >
+      this._imageLens.nativeElement.naturalHeight
+    )
+      y_axis = this._imageLens.nativeElement.naturalHeight - this.boxSizeHeight;
+    if (y_axis < 0) y_axis = 0;
+
+    const style: Object = {
+      'background-image': `url(${this.imageLensUrl})`,
+      'background-repeat': 'no-repeat',
+      'background-position': `-${x_axis}px -${y_axis}px`,
+      width: this.boxSizeWidth + 'px',
+      height: this.boxSizeHeight + 'px',
     };
     return style;
   }

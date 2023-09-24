@@ -26,3 +26,17 @@
     />
   </figure>
 </ng-template>
+
+<ng-template #bgLensTemplate>
+  <figure
+    [ngStyle]="{
+      margin: 'unset',
+      position: 'relative',
+      overflow: 'hidden',
+      width: boxSizeWidth + 'px',
+      height: boxSizeHeight + 'px'
+    }"
+  >
+    <div [ngStyle]="bgStyle(imageInfo.coor)"></div>
+  </figure>
+</ng-template>
