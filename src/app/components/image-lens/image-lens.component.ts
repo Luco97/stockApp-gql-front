@@ -103,23 +103,33 @@ export class ImageLensComponent implements OnInit {
   }
 
   imageStyle(coor: coorAxis): Object {
-    return {
+    let x_axis: number =
+        (coor['offsetX'] / coor['naturalWidth']) *
+          this._imageLens.nativeElement.naturalWidth *
+          this.scale -
+        this.boxSizeWidth / 2,
+      y_axis: number =
+        (coor['offsetY'] / coor['naturalHeight']) *
+          this._imageLens.nativeElement.naturalHeight *
+          this.scale -
+        this.boxSizeHeight / 2;
+    if (x_axis + this.boxSizeWidth > this._imageLens.nativeElement.naturalWidth)
+      x_axis = this._imageLens.nativeElement.naturalWidth - this.boxSizeWidth;
+    if (x_axis < 0) x_axis = 0;
+    if (
+      y_axis + this.boxSizeHeight >
+      this._imageLens.nativeElement.naturalHeight
+    )
+      y_axis = this._imageLens.nativeElement.naturalHeight - this.boxSizeHeight;
+    if (y_axis < 0) y_axis = 0;
+    const style: Object = {
       position: 'absolute',
       'transform-origin': 'top left',
       // scale para zoom (mejor aumentar escala que descargar otra en mayor res)
       transform: `scale(${this.scale ?? 0.01})`,
-      top: `-${
-        (coor['offsetY'] / coor['naturalHeight']) *
-          this._imageLens.nativeElement.naturalHeight *
-          this.scale -
-        this.boxSizeHeight / 2
-      }px`,
-      left: `-${
-        (coor['offsetX'] / coor['naturalWidth']) *
-          this._imageLens.nativeElement.naturalWidth *
-          this.scale -
-        this.boxSizeWidth / 2
-      }px`,
+      top: `-${y_axis}px`,
+      left: `-${x_axis}px`,
     };
+    return style;
   }
 }
