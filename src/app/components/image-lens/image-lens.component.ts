@@ -20,6 +20,7 @@ import { coorAxis } from '@directives/coordinates';
   styleUrls: ['./image-lens.component.scss'],
 })
 export class ImageLensComponent implements OnInit {
+  // TODO: funciona como el poto, arreglar
   @HostListener('wheel', ['$event']) wheelEvent(event: WheelEvent) {
     if (event.deltaY > 0 && this.scale > 0.75) {
       // scroll down, zoom out
@@ -75,7 +76,7 @@ export class ImageLensComponent implements OnInit {
   @ViewChild('imageLens') private _imageLens!: ElementRef<HTMLImageElement>;
   scale: number = 1;
 
-  // TODO: definir ideal en tamaño de imagen que se emite por output
+  // TODO: definir ideal en tamaño de imagen que se emite por output --> 2.5 es ideal
   get boxSizeWidth(): number {
     return this._imageLens.nativeElement.naturalWidth / this.boxSize ?? 300;
   }
@@ -168,6 +169,7 @@ export class ImageLensComponent implements OnInit {
       'background-image': `url(${this.imageLensUrl})`,
       'background-repeat': 'no-repeat',
       'background-position': `-${x_axis}px -${y_axis}px`,
+      transform: `scale(${this.scale ?? 0.01})`,
       width: this.boxSizeWidth + 'px',
       height: this.boxSizeHeight + 'px',
     };
