@@ -5,6 +5,8 @@ export interface coorAxis {
   clientY: number;
   offsetX: number;
   offsetY: number;
+  naturalWidth: number;
+  naturalHeight: number;
 }
 
 @Directive({
@@ -16,17 +18,16 @@ export class CoordinatesDirective {
   @Output('mouseEnter') private _mouseEnter: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
-  // private coordinates: coorAxis = { x: 0, y: 0 };
-
   @HostListener('mousemove', ['$event']) mouseMove(event: MouseEvent) {
-    // this.coordinates['x'] = event.clientX;
-    // this.coordinates['y'] = event.clientY;
-    // console.log('--> ', event.clientX, ', ', event.clientY);
+    const { naturalWidth, naturalHeight } =
+      event.currentTarget as HTMLImageElement;
     this._coordinates.emit({
       offsetX: event.offsetX,
       offsetY: event.offsetY,
       clientX: event.clientX,
       clientY: event.clientY,
+      naturalWidth,
+      naturalHeight,
     });
   }
   @HostListener('mouseenter', ['$event']) mouseEnter(event: MouseEvent) {
