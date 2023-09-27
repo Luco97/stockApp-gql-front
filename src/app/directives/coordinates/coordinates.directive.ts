@@ -19,15 +19,15 @@ export class CoordinatesDirective {
     new EventEmitter<boolean>();
 
   @HostListener('mousemove', ['$event']) mouseMove(event: MouseEvent) {
-    const { naturalWidth, naturalHeight } =
+    const { naturalWidth, naturalHeight, clientWidth, clientHeight } =
       event.currentTarget as HTMLImageElement;
     this._coordinates.emit({
       offsetX: event.offsetX,
       offsetY: event.offsetY,
       clientX: event.clientX,
       clientY: event.clientY,
-      naturalWidth,
-      naturalHeight,
+      naturalWidth: naturalWidth || clientWidth,
+      naturalHeight: naturalHeight || clientHeight,
     });
   }
   @HostListener('mouseenter', ['$event']) mouseEnter(event: MouseEvent) {
