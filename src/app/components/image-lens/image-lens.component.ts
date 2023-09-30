@@ -53,7 +53,7 @@ export class ImageLensComponent implements OnInit {
   @Input() boxSize: number = 5;
 
   /**
-   *@value false emite template (mercado libre o amazon)
+   *@value false emite template (tipo mercado libre o amazon)
    *@value true muestra imagen ampliada tipo aliexpress (pero con mayor resolucion)
    *@defaultValue false
    */
@@ -92,7 +92,7 @@ export class ImageLensComponent implements OnInit {
 
   @ViewChild('imageLens') private _imageLens!: ElementRef<HTMLImageElement>;
 
-  scale: number = 1;
+  scale: number = 2;
 
   // TODO: definir ideal en tamaño de imagen que se emite por output --> 2.5 es ideal
   get boxSizeWidth(): number {
@@ -131,6 +131,25 @@ export class ImageLensComponent implements OnInit {
     this.mouseOverImage.emit(event);
   }
 
+  mouseDance(event: MouseEvent) {
+    const { naturalWidth, naturalHeight, clientWidth, clientHeight } =
+      event.currentTarget as HTMLImageElement;
+    this.imageInfo['coor'] = {
+      offsetX: event.offsetX,
+      offsetY: event.offsetY,
+      clientX: event.clientX,
+      clientY: event.clientY,
+      naturalWidth: naturalWidth || clientWidth,
+      naturalHeight: naturalHeight || clientHeight,
+    };
+  }
+  mouseIn() {
+    this.imageInfo['isIn'] = true;
+  }
+  mouseOut() {
+    this.imageInfo['isIn'] = false;
+  }
+
   private _getAxis(coor: coorAxis): { x_axis: number; y_axis: number } {
     let x_axis: number =
         (coor['offsetX'] / coor['naturalWidth']) *
@@ -148,13 +167,20 @@ export class ImageLensComponent implements OnInit {
     if (y_axis < 0) y_axis = 0;
 
     // Para evitar seguir moviendo cuando no hay imagen por right & bottom
-    if (x_axis + this.boxSizeWidth > this._imageLens.nativeElement.naturalWidth)
-      x_axis = this._imageLens.nativeElement.naturalWidth - this.boxSizeWidth;
+    if (
+      x_axis + this.boxSizeWidth >
+      this._imageLens.nativeElement.naturalWidth * this.scale
+    )
+      x_axis =
+        this._imageLens.nativeElement.naturalWidth * this.scale -
+        this.boxSizeWidth;
     if (
       y_axis + this.boxSizeHeight >
-      this._imageLens.nativeElement.naturalHeight
+      this._imageLens.nativeElement.naturalHeight * this.scale
     )
-      y_axis = this._imageLens.nativeElement.naturalHeight - this.boxSizeHeight;
+      y_axis =
+        this._imageLens.nativeElement.naturalHeight * this.scale -
+        this.boxSizeHeight;
 
     return { x_axis, y_axis };
   }
@@ -206,22 +232,4 @@ export class ImageLensComponent implements OnInit {
     return {};
   }
 
-  mouseDance(event: MouseEvent) {
-    const { naturalWidth, naturalHeight, clientWidth, clientHeight } =
-      event.currentTarget as HTMLImageElement;
-    this.imageInfo['coor'] = {
-      offsetX: event.offsetX,
-      offsetY: event.offsetY,
-      clientX: event.clientX,
-      clientY: event.clientY,
-      naturalWidth: naturalWidth || clientWidth,
-      naturalHeight: naturalHeight || clientHeight,
-    };
-  }
-  mouseIn() {
-    this.imageInfo['isIn'] = true;
-  }
-  mouseOut() {
-    this.imageInfo['isIn'] = false;
-  }
 }
