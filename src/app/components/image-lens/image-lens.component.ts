@@ -92,7 +92,7 @@ export class ImageLensComponent implements OnInit {
 
   @ViewChild('imageLens') private _imageLens!: ElementRef<HTMLImageElement>;
 
-  scale: number = 2;
+  scale: number = 1;
 
   // TODO: definir ideal en tamaño de imagen que se emite por output --> 2.5 es ideal
   get boxSizeWidth(): number {
