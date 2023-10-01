@@ -150,16 +150,19 @@ export class ImageLensComponent implements OnInit {
     this.imageInfo['isIn'] = false;
   }
 
-  private _getAxis(coor: coorAxis): { x_axis: number; y_axis: number } {
+  private _getAxis(
+    coor: coorAxis,
+    scale: number
+  ): { x_axis: number; y_axis: number } {
     let x_axis: number =
         (coor['offsetX'] / coor['naturalWidth']) *
           this._imageLens.nativeElement.naturalWidth *
-          this.scale -
+          scale -
         this.boxSizeWidth / 2,
       y_axis: number =
         (coor['offsetY'] / coor['naturalHeight']) *
           this._imageLens.nativeElement.naturalHeight *
-          this.scale -
+          scale -
         this.boxSizeHeight / 2;
 
     // Para evitar seguir moviendo cuando no hay imagen por left & top
@@ -169,24 +172,23 @@ export class ImageLensComponent implements OnInit {
     // Para evitar seguir moviendo cuando no hay imagen por right & bottom
     if (
       x_axis + this.boxSizeWidth >
-      this._imageLens.nativeElement.naturalWidth * this.scale
+      this._imageLens.nativeElement.naturalWidth * scale
     )
       x_axis =
-        this._imageLens.nativeElement.naturalWidth * this.scale -
-        this.boxSizeWidth;
+        this._imageLens.nativeElement.naturalWidth * scale - this.boxSizeWidth;
     if (
       y_axis + this.boxSizeHeight >
-      this._imageLens.nativeElement.naturalHeight * this.scale
+      this._imageLens.nativeElement.naturalHeight * scale
     )
       y_axis =
-        this._imageLens.nativeElement.naturalHeight * this.scale -
+        this._imageLens.nativeElement.naturalHeight * scale -
         this.boxSizeHeight;
 
     return { x_axis, y_axis };
   }
 
   imageStyle(coor: coorAxis): Object {
-    const { x_axis, y_axis } = this._getAxis(coor);
+    const { x_axis, y_axis } = this._getAxis(coor, this.scale);
     const style: Object = {
       position: 'absolute',
       'transform-origin': 'top left',
@@ -199,22 +201,32 @@ export class ImageLensComponent implements OnInit {
   }
 
   bgStyle(coor: coorAxis): Object {
-    const { x_axis, y_axis } = this._getAxis(coor);
-
+    const { x_axis, y_axis } = this._getAxis(coor, 1);
+    let dynamicWidth = this.boxSizeWidth - this.boxSizeWidth * this.scale;
+    let dynamicHeight = this.boxSizeHeight - this.boxSizeHeight * this.scale;
+    if (this.scale < 1) {
+      dynamicWidth = this.boxSizeWidth + dynamicWidth;
+      dynamicHeight = this.boxSizeHeight + dynamicHeight;
+    } else {
+      dynamicWidth = this.boxSizeWidth;
+      dynamicHeight = this.boxSizeHeight;
+    }
     const style: Object = {
       'background-image': `url(${this.imageLensUrl})`,
       'background-repeat': 'no-repeat',
+      top: 0,
+      left: 0,
       'background-position': `-${x_axis}px -${y_axis}px`,
-      transform: `scale(${this.scale ?? 0.01})`,
-      width: this.boxSizeWidth + 'px',
-      height: this.boxSizeHeight + 'px',
+      transform: `scale(${this.scale < 1 ? 1 : this.scale})`,
+      width: dynamicWidth + 'px',
+      height: dynamicHeight + 'px',
     };
     return style;
   }
 
   bgStyleOver(coor: coorAxis): Object {
     if (this._imageLens) {
-      const { x_axis, y_axis } = this._getAxis(coor);
+      const { x_axis, y_axis } = this._getAxis(coor, 1);
       const style: Object = {
         position: 'absolute',
         top: 0,
@@ -231,5 +243,4 @@ export class ImageLensComponent implements OnInit {
     }
     return {};
   }
-
 }
