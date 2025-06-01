@@ -41,7 +41,7 @@ import { coorAxis } from '@directives/coordinates';
  * ======================
  * Componente .html
  * ```html
- * <div style="display: flex">
+ <div style="display: flex">
   <app-image-lens
     [imageUrl]="
       'https://res.cloudinary.com/dogjjjeg2/image/upload/c_thumb,w_400,g_face/v1680327202/samples/landscapes/architecture-signs.jpg'
@@ -76,7 +76,21 @@ import { coorAxis } from '@directives/coordinates';
   </div>
 </div>
  * ```
- */
+ * CSS utilizado en ejemplo
+ * ```css
+ .zoom {
+  border-radius: 50%;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 5px dotted orange;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  cursor: none;
+}
+ * ```
+ * 
+ * */
 @Component({
   selector: 'app-image-lens',
   templateUrl: './image-lens.component.html',
