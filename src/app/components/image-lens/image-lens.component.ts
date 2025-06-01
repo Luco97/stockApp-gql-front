@@ -13,6 +13,45 @@ import { coorAxis } from '@directives/coordinates';
 
 /**
  * TODO: ejemplo para uso basico
+ * Imagen en uso, misma imagen pero en distinta calidad
+ * se utiliza imagen con menor calidad para usar lupa sobre
+ * y se utiliza imagen de mayor calidad para zoom
+ * ```html
+ * <div style="display: flex">
+  <app-image-lens
+    [imageUrl]="
+      'https://res.cloudinary.com/dogjjjeg2/image/upload/c_thumb,w_400,g_face/v1680327202/samples/landscapes/architecture-signs.jpg'
+    "
+    [imageLensUrl]="
+      'https://res.cloudinary.com/dogjjjeg2/image/upload/c_scale,w_1280/v1680327202/samples/landscapes/architecture-signs.jpg'
+    "
+    [imageAlt]="'Imagen prueba'"
+    (mouseOverImage)="imageMouse($event)"
+    (imageLensElement)="imageOutput($event)"
+    (bgLensElement)="imageBgOutput($event)"
+    [boxSize]="3.5"
+    [templateOver]="false"
+  ></app-image-lens>
+
+  <div *ngIf="imageIn" style="border: 3px solid greenyellow">
+    <ng-container *ngTemplateOutlet="myTemplate"></ng-container>
+  </div>
+</div>
+<div style="display: flex">
+  <div *ngIf="true" style="display: flex; flex-direction: column">
+    <p>img</p>
+    <div style="border: 3px solid red">
+      <ng-container *ngTemplateOutlet="myTemplate"></ng-container>
+    </div>
+  </div>
+  <div *ngIf="true" style="display: flex; flex-direction: column">
+    <p>background</p>
+    <div style="border: 3px solid greenyellow">
+      <ng-container *ngTemplateOutlet="myTemplateBg"></ng-container>
+    </div>
+  </div>
+</div>
+ * ```
  */
 @Component({
   selector: 'app-image-lens',
