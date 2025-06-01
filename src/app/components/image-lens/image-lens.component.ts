@@ -16,6 +16,30 @@ import { coorAxis } from '@directives/coordinates';
  * Imagen en uso, misma imagen pero en distinta calidad
  * se utiliza imagen con menor calidad para usar lupa sobre
  * y se utiliza imagen de mayor calidad para zoom
+ * 
+ * Componente .ts
+ * ```typescript
+  myTemplate!: TemplateRef<any>;
+  myTemplateBg!: TemplateRef<any>;
+
+  imageIn: boolean = false;
+  afterInit: boolean = false;
+  imageMouse(event: boolean) {
+    this.imageIn = event;
+  }
+
+  imageOutput(event: TemplateRef<any>) {
+    // console.log('algo llega...-> ', event);
+    this.myTemplate = event;
+  }
+
+  imageBgOutput(event: TemplateRef<any>) {
+    // console.log('algo llega...-> ', event);
+    this.myTemplateBg = event;
+  }
+ * ```
+ * ======================
+ * Componente .html
  * ```html
  * <div style="display: flex">
   <app-image-lens
