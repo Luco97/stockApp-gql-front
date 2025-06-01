@@ -135,10 +135,10 @@ export class ImageLensComponent implements OnInit {
 
   // TODO: definir ideal en tamaño de imagen que se emite por output --> 2.5 es ideal
   get boxSizeWidth(): number {
-    return this._imageLens.nativeElement.naturalWidth / this.boxSize ?? 300;
+    return this._imageLens.nativeElement.naturalWidth / this.boxSize || 300;
   }
   get boxSizeHeight(): number {
-    return this._imageLens.nativeElement.naturalHeight / this.boxSize ?? 300;
+    return this._imageLens.nativeElement.naturalHeight / this.boxSize || 300;
   }
 
   imageInfo: { coor: coorAxis; isIn: boolean } = {
