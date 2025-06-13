@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Input,
   OnInit,
@@ -9,7 +10,7 @@ import {
   ElementRef,
   HostListener,
 } from '@angular/core';
-import { coorAxis } from '@directives/coordinates';
+import { coorAxis, CoordinatesModule } from '@directives/coordinates';
 
 /**
  * TODO: ejemplo para uso basico
@@ -95,6 +96,8 @@ import { coorAxis } from '@directives/coordinates';
   selector: 'app-image-lens',
   templateUrl: './image-lens.component.html',
   styleUrls: ['./image-lens.component.scss'],
+  standalone: true,
+  imports: [CommonModule, CoordinatesModule],
 })
 export class ImageLensComponent implements OnInit {
   // TODO: funciona como el poto, arreglar

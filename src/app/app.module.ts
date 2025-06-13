@@ -14,7 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeModule } from '@services/theme';
-import { ImageLensModule } from './components/image-lens';
+import { ImageLensComponent } from './components/image-lens';
 // import { ImageLensModule } from '@components/image-lens';
 
 @NgModule({
@@ -32,7 +32,8 @@ import { ImageLensModule } from './components/image-lens';
     ThemeModule,
     MatMenuModule,
     // CoordinatesModule,
-    ImageLensModule,
+    // ImageLensModule,
+    ImageLensComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
