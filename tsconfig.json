@@ -16,16 +16,30 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@services/*": ["src/app/services/*"],
-      "@directives/*": ["src/app/directives/*"],
-      "@components/*": ["src/app/components/*"], // guardar en app.component.ts causa error y no encuentra componente en hotreload
-      "@interfaces/*": ["src/app/interfaces/*"]
-    }
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@services/*": [
+        "src/app/services/*"
+      ],
+      "@directives/*": [
+        "src/app/directives/*"
+      ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
+      "@interfaces/*": [
+        "src/app/interfaces/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
