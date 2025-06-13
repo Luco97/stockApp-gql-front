@@ -1,0 +1,76 @@
+.content {
+  height: 100vh;
+  // width: 1200px;
+  border: 10px solid red;
+  position: relative;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.navbar {
+  display: flex;
+}
+
+.space {
+  flex-grow: 1;
+}
+
+.mat-app-background {
+  transition: background-color 400ms; // the same time by default in buttons transition is 400ms
+}
+
+.zoom {
+  border-radius: 50%;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 5px dotted orange;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  cursor: none;
+}
+
+.follow-thumbnails {
+  display: flex;
+  gap: 30px;
+  .mini-image {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
