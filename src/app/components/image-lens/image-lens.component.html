@@ -1,7 +1,10 @@
 <!-- Caso tipo mercado libre o amazon -->
 <!-- Caso de emitir template de image (#imageLensTemplate o #bgLensTemplate) -->
 <!-- tienen resultado similar, solo que bg seria la mas elegante  -->
-<figure *ngIf="!templateOver" class="sample-image">
+
+@if (!templateOver) {
+
+<figure class="sample-image">
   <img
     coorAxis
     (coordinates)="mouseOutput($event)"
@@ -10,6 +13,7 @@
     [src]="imageUrl"
   />
 </figure>
+}
 
 <ng-template #imageLensTemplate>
   <figure
@@ -46,8 +50,8 @@
 <!-- Caso tipo aliexpress  -->
 <!-- imagen se agrande dentro del mismo contenedor de esta -->
 <!-- se usa la solucion similar a #bgLensTemplate -->
+@if (templateOver) {
 <figure
-  *ngIf="templateOver"
   class="sample-image over-image"
   (mousemove)="mouseDance($event)"
   (mouseenter)="mouseIn()"
@@ -56,5 +60,6 @@
   <img [alt]="imageAlt" [src]="imageUrl" />
   <div [ngStyle]="bgStyleOver(imageInfo.coor)"></div>
 </figure>
+}
 
 <img #imageLens [src]="imageLensUrl" style="display: none" />
