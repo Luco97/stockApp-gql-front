@@ -9,8 +9,8 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
+// @include mat.all-legacy-component-typographies();
+// @include mat.legacy-core();
 
 // Palettes
 
@@ -256,14 +256,14 @@ $dark-theme: mat.m2-define-dark-theme(
 // @include mat.all-component-themes($dark-theme);
 
 .dark-theme {
-  @include mat.all-legacy-component-themes($dark-theme);
+  // @include mat.all-legacy-component-themes($dark-theme);
   // @include mat.core-theme($dark-theme);
   // @include mat.button-theme($dark-theme);
 }
 
 // Apply light theme only with .light-the in class
 .light-theme {
-  @include mat.all-legacy-component-colors($light-theme);
+  // @include mat.all-legacy-component-colors($light-theme);
   // @include mat.all-component-themes($light-theme);
   // @include mat.core-color($light-theme);
   // @include mat.button-color($light-theme);
@@ -276,7 +276,7 @@ $custom-typography: mat.m2-define-legacy-typography-config(
   $font-family: "Nunito",
 );
 
-@include mat.all-legacy-component-typographies($custom-typography);
+// @include mat.all-legacy-component-typographies($custom-typography);
 
 html,
 body {
