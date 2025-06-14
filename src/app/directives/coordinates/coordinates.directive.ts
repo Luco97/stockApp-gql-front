@@ -11,6 +11,7 @@ export interface coorAxis {
 
 @Directive({
   selector: '[coorAxis]',
+  standalone: true,
 })
 export class CoordinatesDirective {
   @Output('coordinates') private _coordinates: EventEmitter<coorAxis> =
