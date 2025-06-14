@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @use "@angular/material" as mat;
 
-@include mat.core();
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
 
 // Palettes
 
@@ -247,27 +256,27 @@ $dark-theme: mat.define-dark-theme(
 // @include mat.all-component-themes($dark-theme);
 
 .dark-theme {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-legacy-component-themes($dark-theme);
   // @include mat.core-theme($dark-theme);
   // @include mat.button-theme($dark-theme);
 }
 
 // Apply light theme only with .light-the in class
 .light-theme {
-  @include mat.all-component-colors($light-theme);
+  @include mat.all-legacy-component-colors($light-theme);
   // @include mat.all-component-themes($light-theme);
   // @include mat.core-color($light-theme);
   // @include mat.button-color($light-theme);
 }
 
 // Typography
-$custom-typography: mat.define-typography-config(
+$custom-typography: mat.define-legacy-typography-config(
   $title: mat.define-typography-level(2rem, 1, 800),
   $button: mat.define-typography-level(0.9rem, 1, 600),
   $font-family: "Nunito",
 );
 
-@include mat.all-component-typographies($custom-typography);
+@include mat.all-legacy-component-typographies($custom-typography);
 
 html,
 body {
