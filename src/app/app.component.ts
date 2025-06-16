@@ -6,9 +6,8 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { themes } from '@assets/themes';
-import { coorAxis } from '@directives/coordinates';
 import { ThemeService } from '@services/theme';
-import { Subject, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
