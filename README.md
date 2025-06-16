@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://cdn.discordapp.com/attachments/907296858970415144/1001666111827353650/stock-app-logo.png" alt="logo de aplicacion" width="320">
+    <img src="https://cdn.discordapp.com/attachments/907296858970415144/1001666111827353650/ecomm-app-logo.png" alt="logo de aplicacion" width="320">
 </p>
 <hr>
 
@@ -14,7 +14,7 @@ Alguna de las definiciones tomadas para la App:
 - Libreria UI utilizada: Angular Material
 - Mas chamullo en el futuro
 
-# StockApp
+# EcommApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 

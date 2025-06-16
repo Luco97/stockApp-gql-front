@@ -19,7 +19,7 @@ import { Subject, tap } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'stockApp';
+  title = 'EcommApp';
 
   @HostBinding('class') private _currentClass = '';
 
