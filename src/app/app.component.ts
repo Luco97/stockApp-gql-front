@@ -2,11 +2,8 @@ import {
   AfterViewInit,
   Component,
   HostBinding,
-  HostListener,
   OnInit,
   TemplateRef,
-  ViewChild,
-  ViewContainerRef,
 } from '@angular/core';
 import { themes } from '@assets/themes';
 import { coorAxis } from '@directives/coordinates';
@@ -14,10 +11,10 @@ import { ThemeService } from '@services/theme';
 import { Subject, tap } from 'rxjs';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'stockApp';

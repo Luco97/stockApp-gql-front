@@ -10,12 +10,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { ThemeModule } from '@services/theme';
-import { ImageLensComponent } from './components/image-lens';
-// import { ImageLensModule } from '@components/image-lens';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+
+import { ThemeModule } from '@services/theme';
+import { ImageLensComponent } from './components/image-lens';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,10 +29,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatSlideToggleModule,
     MatIconModule,
-    ThemeModule,
     MatMenuModule,
-    // CoordinatesModule,
-    // ImageLensModule,
+    ThemeModule,
     ImageLensComponent,
   ],
   providers: [],
