@@ -9,13 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacySlideToggleModule as MatSlideToggleModule } from '@angular/material/legacy-slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+
 import { ThemeModule } from '@services/theme';
 import { ImageLensComponent } from './components/image-lens';
-// import { ImageLensModule } from '@components/image-lens';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,10 +29,8 @@ import { ImageLensComponent } from './components/image-lens';
     MatButtonModule,
     MatSlideToggleModule,
     MatIconModule,
-    ThemeModule,
     MatMenuModule,
-    // CoordinatesModule,
-    // ImageLensModule,
+    ThemeModule,
     ImageLensComponent,
   ],
   providers: [],
